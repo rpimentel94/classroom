@@ -9,13 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MainController extends AbstractController
 {
     /**
-      * @Route("/lucky/number")
+      * @Route("/schedule/create")
       */
-    public function number(): Response
+    public function create(): Response
     {
         $number = random_int(0, 100);
 
-        return $this->render('main/number.html.twig', [
+        return $this->render('main/main.html.twig', [
             'number' => $number,
         ]);
     }
