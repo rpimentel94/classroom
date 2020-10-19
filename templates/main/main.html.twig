@@ -116,7 +116,7 @@
             return false;
         } else {
         $.ajax({
-            url: "/api/find-user/" + username + "/" + email,
+            url: "/public/api/find-user/" + username + "/" + email,
             success: function(result){
             student_id = result.student_id;
             display_id = ("0000000" + student_id).slice(-7);
@@ -129,7 +129,7 @@
 
     function get_student_schedule(student_id) {
         $.ajax({
-            url: "/api/find-schedule/" + student_id,
+            url: "/public/api/find-schedule/" + student_id,
             success: function(result){
             $('.confirmStudent').hide();
             $('.currentSchedule').show();
@@ -149,7 +149,7 @@
 
     function get_subjects() {
         $.ajax({
-            url: "/api/find-subjects",
+            url: "/public/api/find-subjects",
             success: function(data){
                 $('.selectSubject').show();
                 $('.selectSubject, .selectTopic, .selectTimeslot').empty();
@@ -165,7 +165,7 @@
     $('.selectSubject').change(function(){ 
         var subject = $(this).find("option:selected").attr('value');
         $.ajax({
-            url: "/api/find-topic/" + subject,
+            url: "/public/api/find-topic/" + subject,
             success: function(data){
                 $('.selectTopic').show();
                 $('.selectTopic, .selectTimeslot').empty();
@@ -181,7 +181,7 @@
     $('.selectTopic').change(function(){ 
         var topic = $(this).find("option:selected").attr('value');
         $.ajax({
-            url: "/api/find-timeslot/" + topic,
+            url: "/public/api/find-timeslot/" + topic,
             success: function(data){
                 $('.selectTimeslot').show();
                 $('.selectTimeslot').empty();
@@ -210,7 +210,7 @@
         event.preventDefault();
         var timeslot_id = $('.selectTimeslot').find("option:selected").attr('value');
         $.ajax({
-            url: "/api/add-timeslot/" + student_id + "/" + timeslot_id,
+            url: "/public/api/add-timeslot/" + student_id + "/" + timeslot_id,
             success: function(result){
                 $('.selectTopic, .selectSubject, .selectTimeslot').hide();
                 $('.selectTopic, .selectSubject, .selectTimeslot, table tbody').empty();
